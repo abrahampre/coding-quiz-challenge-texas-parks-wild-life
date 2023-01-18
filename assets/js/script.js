@@ -26,9 +26,20 @@ var answerb = [
 ]
 
 
-
+var timerStarts = function(counter){
+    console.log("entered time starts")
+    setInterval(timerCountdown, 1000)
+    function timerCountdown () {
+        counterEl.innerHTML  = counter;
+        counter = counter-1
+    }
+    return counter;
+}
 
 var answersButtonHandler = function(event){
+
+
+
     console.log(event.target);
     var targetEl =event.target;
     console.log(targetEl)
@@ -39,10 +50,13 @@ var answersButtonHandler = function(event){
 // }
 
 var startQuiz= function(event){
+
     console.log(event.target)
     console.log("quiz starts")
-    counterEl.innerHTML = counter;
+    // counterEl.innerHTML = counter;
+    timerStarts(counter);
     insertElements();
+
 }
 
 var insertElements=  function(){
