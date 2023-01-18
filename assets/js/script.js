@@ -90,6 +90,9 @@ var insertElements=  function(){
     var questionContent =  pageContentEl.querySelector("#question-content");
     questionContent.innerHTML = questions[0];
 
+    // remove instructions 
+    buttonContainer.querySelector("#instructions").remove()
+
     // create button element then insert button to div area
     var firstSelection = document.createElement("button");
     firstSelection.className = "btn";
@@ -97,6 +100,25 @@ var insertElements=  function(){
     firstSelection.setAttribute("answer-id", answerA[0]["answer-id"]);
     buttonContainer.appendChild(firstSelection);
 
+
+    var secondSelection = document.createElement("button");
+    secondSelection.className = "btn";
+    secondSelection.textContent = answerB[0].optionB;
+    secondSelection.setAttribute("answer-id", answerB[0]["answer-id"]);
+    buttonContainer.appendChild(secondSelection);
+
+    var thirdSelection = document.createElement("button");
+    thirdSelection.className = "btn";
+    thirdSelection.textContent = answerC[0].optionC;
+    thirdSelection.setAttribute("answer-id", answerC[0]["answer-id"]);
+    buttonContainer.appendChild(thirdSelection);
+
+    var fourthSelection = document.createElement("button");
+    fourthSelection.className = "btn";
+    fourthSelection.textContent =  answerD[0].optionD;
+    fourthSelection.setAttribute ("answer-id",answerD[0]["answer-id"]);
+    buttonContainer.appendChild(fourthSelection);
+    
 }
 
 
