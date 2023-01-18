@@ -1,29 +1,53 @@
 var pageContentEl =  document.querySelector("#page-content");
+var buttonContainer =  document.querySelector("#button-container")
 var buttonStartEl = document.querySelector("#btna");
 var counterEl = document.querySelector("#timer-count-down")
 var buttonContainerEl = document.querySelector("#btn-container")
 var counter = 60;
 var questions = ["question number 1","question number 2"];
-var answera = [
+var answerA = [
     {
-        "answera":"this is answer a for the first question",
-        "id":"correct"
+        "optionA":"this is answer a for the first question",
+        "answer-id":"correct"
     },
     {
-        "answera":"this is anwer a for the second question",
-        "id":"correct"
+        "optionA":"this is anwer a for the second question",
+        "answer-id":"correct"
     }
-]
-var answerb = [
+];
+var answerB = [
     {
-        "answerb":"this is answer b for the first question",
-        "id":"correct"
+        "optionB":"this is answer b for the first question",
+        "answer-id":"correct"
     },
     {
-        "answerb":"this is anwer b for the second question",
-        "id":"correct"
+        "optionB":"this is anwer b for the second question",
+        "answer-id":"correct"
     }
-]
+];
+
+var answerC  = [
+    {
+        "optionC":"this is answer b for the first question",
+        "answer-id":"correct"
+    },
+    {
+        "optionC":"this is anwer b for the second question",
+        "answer-id":"correct"
+    }
+];
+
+var answerD  = [
+    {
+        "optionD":"this is answer b for the first question",
+        "answer-id":"correct"
+    },
+    {
+        "optionD":"this is anwer b for the second question",
+        "answer-id":"correct"
+    }
+];
+
 
 
 var timerStarts = function(counter){
@@ -61,7 +85,18 @@ var startQuiz= function(event){
 
 var insertElements=  function(){
     console.log("insert elements")
-    
+
+    // insert questions 
+    var questionContent =  pageContentEl.querySelector("#question-content");
+    questionContent.innerHTML = questions[0];
+
+    // create button element then insert button to div area
+    var firstSelection = document.createElement("button");
+    firstSelection.className = "btn";
+    firstSelection.textContent = answerA[0].optionA;
+    firstSelection.setAttribute("answer-id", answerA[0]["answer-id"]);
+    buttonContainer.appendChild(firstSelection);
+
 }
 
 
