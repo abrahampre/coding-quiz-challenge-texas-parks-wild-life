@@ -1,9 +1,13 @@
 var pageContentEl =  document.querySelector("#page-content");
 var buttonContainer =  document.querySelector("#button-container")
 var buttonStartEl = document.querySelector("#btna");
+
+
+//to select coutner
 var counterEl = document.querySelector("#timer-count-down")
 var buttonContainerEl = document.querySelector("#btn-container")
 var counter = 60;
+var numberQuestions = 0;
 var questions = ["question number 1","question number 2"];
 var answerA = [
     {
@@ -62,11 +66,25 @@ var timerStarts = function(counter){
 
 var answersButtonHandler = function(event){
 
-
-
-    console.log(event.target);
+    // console.log(event.target);
     var targetEl =event.target;
-    console.log(targetEl)
+    // // if(targetEl.matches(".btn")){
+    // //     var btnslctd =  targetEl.getAttribute("answer-id")
+    // //     console.log(btnslctd)
+    // // }
+
+
+
+    var choosenAnswer = targetEl.getAttribute("answer-id");
+    console.log(choosenAnswer);
+
+    if (choosenAnswer === "correct"){
+        console.log("correct answer!")
+    }
+    else{
+        console.log("wrong answer!")
+    }
+    insertElements();
 }
 
 // var startQuiz = function (){
@@ -79,24 +97,27 @@ var startQuiz= function(event){
     console.log("quiz starts")
     // counterEl.innerHTML = counter;
     timerStarts(counter);
-    insertElements();
-
+    
 }
 
 var insertElements=  function(){
     console.log("insert elements")
 
     // insert questions 
-    var questionContent =  pageContentEl.querySelector("#question-content");
-    questionContent.innerHTML = questions[0];
+    
 
     // remove instructions 
-    buttonContainer.querySelector("#instructions").remove()
+    if (numberQuestions===0){
+        buttonContainer.querySelector("#instructions").remove()
+        ++ numberQuestions 
+    }
+
 
     // create button element then insert button to div area
     var firstSelection = document.createElement("button");
     firstSelection.className = "btn";
     firstSelection.textContent = answerA[0].optionA;
+    firstSelection.setAttribute("id", "single-button")
     firstSelection.setAttribute("answer-id", answerA[0]["answer-id"]);
     buttonContainer.appendChild(firstSelection);
 
