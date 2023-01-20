@@ -2,10 +2,13 @@ var pageContentEl =  document.querySelector("#page-content");
 var buttonContainer =  document.querySelector("#button-container")
 var buttonStartEl = document.querySelector("#btn-start");
 
+// when selecting an answer 
+
+
 
 //to select coutner
 var counterEl = document.querySelector("#timer-count-down")
-var buttonContainerEl = document.querySelector("#btn-container")
+
 var counter = [];
 var numberQuestions = 0;
 
@@ -33,22 +36,22 @@ var answerB = [
 
 var answerC  = [
     {
-        "optionC":"this is answer b for the first question",
+        "optionC":"this is answer c for the first question",
         "answer-id":"correct"
     },
     {
-        "optionC":"this is anwer b for the second question",
+        "optionC":"this is anwer c for the second question",
         "answer-id":"correct"
     }
 ];
 
 var answerD  = [
     {
-        "optionD":"this is answer b for the first question",
+        "optionD":"this is answer d for the first question",
         "answer-id":"correct"
     },
     {
-        "optionD":"this is anwer b for the second question",
+        "optionD":"this is anwer d for the second question",
         "answer-id":"correct"
     }
 ];
@@ -70,18 +73,18 @@ var timerStarts = function(counter){
 var answersButtonHandler = function(event){
 
    
-    var targetEl =event.target;
+    // var targetEl =event.target;
  
-    var choosenAnswer = targetEl.getAttribute("answer-id");
-    console.log(choosenAnswer);
+    // var choosenAnswer = targetEl.getAttribute("answer-id");
+    // console.log(choosenAnswer);
 
-    if (choosenAnswer === "correct"){
-        console.log("correct answer!")
-    }
-    else{
-        console.log("wrong answer!")
-        // addTime(counter);
-    }
+    // if (choosenAnswer === "correct"){
+    //     console.log("correct answer!")
+    // }
+    // else{
+    //     console.log("wrong answer!")
+    //     // addTime(counter);
+    // }
     // insertElements();
     insertAnswers();
 }
@@ -153,7 +156,24 @@ var insertElements=  function(){
     
 }
 
+var verifyAnswer = function(event){
+    
+    var targetEl = event.target;
+    console.log(targetEl);
+    var answerValue = targetEl.getAttribute("answer-id");
+    console.log(answerValue);
+
+    if (answerValue === "correct"){
+        console.log("correct answer!")
+    }
+    else if (answerValue==="wrong"){
+        console.log("wrong answer!")
+        // addTime(counter);
+    }
+}
+
 
 pageContentEl.addEventListener("click" , answersButtonHandler);
 buttonStartEl.addEventListener("click", startQuiz);
 buttonStartEl.addEventListener("click", insertElements);
+buttonContainer.addEventListener("click", verifyAnswer);
